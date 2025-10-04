@@ -1,6 +1,6 @@
 // Always Update This File!!
 
-[x] Initial Repo Setup (-m: test commit) //Note: with initial folder and this todo
+- [x] Initial Repo Setup (-m: testing checkbox if working) //Note: with initial folder and this todo
 
 (High Prio/ Major Blocker)
 - [ ] Initial Model
