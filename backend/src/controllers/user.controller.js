@@ -9,8 +9,6 @@ export const createUser = async (req, res, next) => {
     "system_admin",
   ];
 
-  //testtt
-
   const {
     email,
     password,
@@ -48,5 +46,13 @@ export const createUser = async (req, res, next) => {
 };
 
 export const updateUser = async (req, res) => {
+    return
+}
+
+export const deleteUser = async (req, res) => {
+    return
+} 
+
+export const fetchUser = async (req, res) => {
     return
 } 
