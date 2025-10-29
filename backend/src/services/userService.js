@@ -6,7 +6,7 @@ import VetProfessional from "../models/users/vetProfessionalModel.js";
 
 export const registerUser = async (userData) => {
   const { full_name, email, password, user_type, address, clinic_name } = userData;
-  console.log("Hi userData", userData);
+  console.log("Hi from userService userData: ", userData);
   const existing = await User.findOne({ where: { email } });
   if (existing) throw new Error("Email already registered");
 
@@ -34,12 +34,17 @@ export const registerUser = async (userData) => {
 };
 
 export const registerVetProfessional = async (data, adminUserId) => {
-  // Optionally, verify if adminUserId is a ClinicAdmin
+
   const admin = await ClinicAdmin.findOne({ where: { user_id: adminUserId } });
+
   if (!admin)
     throw new Error("Only clinic admins can register vet professionals");
 
-  const { full_name, email, password, clinic_name, license_number } = data;
+  const { full_name, email, password, specialization } = data; //license_number
+
+  const existing = await User.findOne({ where: { email } });
+  if (existing) throw new Error("Email already registered");
+
   const hashedPassword = await bcrypt.hash(password, 10);
 
   const user = await User.create({
@@ -51,8 +56,7 @@ export const registerVetProfessional = async (data, adminUserId) => {
 
   await VetProfessional.create({
     user_id: user.id,
-    clinic_name,
-    license_number,
+    specialization,
   });
 
   return user;

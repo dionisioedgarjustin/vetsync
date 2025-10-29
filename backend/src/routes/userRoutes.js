@@ -1,10 +1,10 @@
 import express from 'express';
 import { register, createVetProfessional } from '../controllers/userController.js';
-// should add verifyAdmin middleware auth JWT
+import { verifyToken, verifyAdmin } from '../middleware/authMiddleware.js';
 
 const router = express.Router();
 
 router.post('/register', register); // for petOwner or clinicAdmin
-router.post('/vet', createVetProfessional); // only clinic admin
+router.post('/vet', verifyToken, verifyAdmin, createVetProfessional); // only clinic admin
 
 export default router;

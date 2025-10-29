@@ -7,7 +7,7 @@ import VetProfessional from './vetProfessionalModel.js';
 // Sync all models with the database
 const syncDB = async () => {
   try {
-    await sequelize.sync({ force: true }); // or { force: true } for dev reset // default alter: true
+    await sequelize.sync({ alter: true }); // or { force: true } for dev reset // default alter: true
     console.log('Database & tables synced successfully!');
   } catch (err) {
     console.error('Error syncing database:', err);
