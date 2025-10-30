@@ -5,7 +5,7 @@
 ## (High Prio/ Major Blocker)
 - [ ] Initial Model
 - [x] PostgreSQL DB Setup
-- [ ] Initial Backend Setup //Note: like npm install?
-- [ ] Frontend Setup
+- [x] Initial Backend Setup //Note: like npm install?
+- [x] Frontend Setup
 - [x] Register Module (UserType: PetOwner & Vet Pro)
 - [ ] Login Module

@@ -26,6 +26,15 @@ export const verifyToken = async (req, res, next) => {
   }
 };
 
+// Verify if user is a PetOwner
+export const verifyOwner = (req, res, next) => {
+  if (req.user.user_type !== 'pet_owner') {
+    return res.status(403).json({ error: 'Access denied — PetOwner only' });
+  }
+  next();
+};
+
+
 // Verify if user is a ClinicAdmin
 export const verifyAdmin = (req, res, next) => {
   if (req.user.user_type !== 'clinic_admin') {
