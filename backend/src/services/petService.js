@@ -25,3 +25,14 @@ export const deletePetService = async (pet_id, owner_id) => {
     where: { pet_id, owner_id },
   });
 };
+
+export const updatePetService = async (pet_id, owner_id, updateData) => {
+  const pet = await Pet.findOne({ where: { pet_id, owner_id } });
+
+  if (!pet) {
+    throw new Error("Pet not found or access denied");
+  }
+
+  await pet.update(updateData);
+  return pet; // return the updated pet object
+};
