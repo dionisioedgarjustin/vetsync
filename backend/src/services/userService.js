@@ -6,7 +6,9 @@ import VetProfessional from "../models/users/vetProfessionalModel.js";
 
 export const registerUser = async (userData) => {
   const { full_name, email, password, user_type, address, clinic_name } = userData;
+
   console.log("Hi from userService userData: ", userData);
+
   const existing = await User.findOne({ where: { email } });
   if (existing) throw new Error("Email already registered");
 
@@ -61,3 +63,12 @@ export const registerVetProfessional = async (data, adminUserId) => {
 
   return user;
 };
+
+export const updateUserProfile = async (userId, profileData) => {
+  const user = await User.findByPk(userId);
+  if (!user) throw new Error("User not found");
+
+  
+  await user.update(profileData);
+  return user;
+}

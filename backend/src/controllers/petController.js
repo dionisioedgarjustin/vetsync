@@ -68,9 +68,9 @@ export const updatePet = async (req, res) => {
   try {
     const owner_id = req.user.id;
     const { pet_id } = req.params;
-    const NewpetData = req.body; // New data for the pet
+    const newPetData = req.body; // New data for the pet
 
-    const updatedPet = await updatePetService(pet_id, owner_id, NewpetData);
+    const updatedPet = await updatePetService(pet_id, owner_id, newPetData);
     return res
       .status(200)
       .json({ message: "Pet updated successfully", pet: updatedPet });
