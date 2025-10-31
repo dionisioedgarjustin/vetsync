@@ -4,6 +4,7 @@ import PetOwner from './petOwnerModel.js';
 import ClinicAdmin from './clinicAdminModel.js';
 import VetProfessional from './vetProfessionalModel.js';
 import Pet from '../petModel.js'
+import Clinic from '../clinicModel.js';
 
 // Sync all models with the database
 const syncDB = async () => {
@@ -15,4 +16,4 @@ const syncDB = async () => {
   }
 };
 
-export { sequelize, User, PetOwner, ClinicAdmin, VetProfessional, Pet, syncDB };
+export { sequelize, User, PetOwner, ClinicAdmin, VetProfessional, Pet, Clinic, syncDB };

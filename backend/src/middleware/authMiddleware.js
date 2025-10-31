@@ -36,7 +36,7 @@ export const verifyOwner = (req, res, next) => {
 
 
 // Verify if user is a ClinicAdmin
-export const verifyAdmin = (req, res, next) => {
+export const verifyClinicAdmin = (req, res, next) => {
   if (req.user.user_type !== 'clinic_admin') {
     return res.status(403).json({ error: 'Access denied — ClinicAdmin only' });
   }
