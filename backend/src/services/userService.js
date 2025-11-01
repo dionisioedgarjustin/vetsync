@@ -79,7 +79,7 @@ export const updateUserProfile = async (userId, profileData) => {
   }
 
   await user.update({
-    password_hash: new_hash,
+    password_hash: new_hash || user.password_hash,
     ...profileData
   });
   return user;
