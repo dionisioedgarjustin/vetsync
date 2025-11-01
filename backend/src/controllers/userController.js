@@ -1,4 +1,4 @@
-import { registerUser, registerVetProfessional } from '../services/userService.js';
+import { registerUser, registerVetProfessional, updateUserProfile } from '../services/userService.js';
 
 export const register = async (req, res) => {
   try {
@@ -19,3 +19,15 @@ export const createVetProfessional = async (req, res) => {
     res.status(400).json({ error: err.message });
   }
 };
+
+export const updateUserDetails = async (req, res) => {
+  try {
+    const userId = req.user.id; // from JWT or session
+    const profileData = req.body;
+    const updatedUser = await updateUserProfile(userId, profileData);
+    res.status(200).json({ message: 'User profile updated successfully', user: updatedUser });
+  } catch (err) {
+    console.error("Error updating user profile", err.message);
+    res.status(500).json({ error: err.message });
+  }
+}

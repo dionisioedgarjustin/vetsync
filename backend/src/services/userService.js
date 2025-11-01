@@ -65,10 +65,22 @@ export const registerVetProfessional = async (data, adminUserId) => {
 };
 
 export const updateUserProfile = async (userId, profileData) => {
+  
+  let new_hash = null;
   const user = await User.findByPk(userId);
   if (!user) throw new Error("User not found");
 
-  
-  await user.update(profileData);
+  const { password } = profileData;
+
+  const isMatch = await bcrypt.compare(password, user.password_hash);
+  if (!isMatch) {
+    new_hash = await bcrypt.hash(password, 10);
+    console.log("Password updated for user:", new_hash);
+  }
+
+  await user.update({
+    password_hash: new_hash,
+    ...profileData
+  });
   return user;
 }

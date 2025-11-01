@@ -33,6 +33,7 @@ const Clinic = sequelize.define( "Clinic", {
       type: DataTypes.STRING,
       allowNull: true,
     },
+    // operating schedule, services offered, etc. can be added later
   }, {
     tableName: "clinics",
     timestamps: false,
